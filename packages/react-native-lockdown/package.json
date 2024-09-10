@@ -1,0 +1,46 @@
+{
+    "name": "@lavamoat/react-native-lockdown",
+    "version": "1.0.0",
+    "description": "Utility for providing SES lockdown in react native apps",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LavaMoat/lavamoat.git",
+      "directory": "packages/react-native-lockdown"
+    },
+    "homepage": "https://github.com/LavaMoat/lavamoat#readme",
+    "bugs": {
+      "url": "https://github.com/LavaMoat/lavamoat/issues"
+    },
+    "author": "LavaMoat Team",
+    "license": "MIT",
+    "engines": {
+      "node": ">18.0.0"
+    },
+    "main": "dist/main.js",
+    "types": "./types/src/types.d.ts",
+    "files": [
+      "CHANGELOG.md",
+      "dist",
+      "types",
+      "!*.tsbuildinfo"
+    ],
+    "scripts": {
+      "build": "node build.js",
+      "test": "ava"
+    },
+    "exports": {
+      ".": "./dist/main.js",
+      "./before": "./dist/before.js",
+      "./after": "./dist/after.js"
+    },
+    "dependencies": {
+      "ses": "1.8.0"
+    },
+    "ava": {
+      "files": [
+        "test/*.spec.js"
+      ],
+      "timeout": "30s"
+    }
+  }
+  
