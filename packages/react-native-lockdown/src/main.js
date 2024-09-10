@@ -1,5 +1,3 @@
-// SES goes here
-
 lockdown({
   errorTaming: 'unsafe',
   consoleTaming: 'unsafe',
@@ -7,4 +5,5 @@ lockdown({
   unhandledRejectionTrapping: 'none',
   overrideTaming: 'severe',
   stackFiltering: 'verbose',
+  legacyRegeneratorRuntimeTaming: 'unsafe-ignore',
 })

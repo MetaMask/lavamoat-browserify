@@ -1,20 +1,33 @@
-// read the ses-hermes as string (fs)
+const { mkdir } = require('node:fs').promises
+const { readFileSync, writeFileSync } = require('node:fs')
+const path = require('node:path')
 
-// concatenate with a call to repair with default options we like
+function concat() {
+  try {
+    const ses = readFileSync(
+      path.join(require.resolve('ses/hermes')),
+      'utf8'
+    )
+    const beforeSrc = readFileSync('./src/before.js', 'utf8')
+    const mainSrc = readFileSync('./src/main.js', 'utf8')
+    const after = readFileSync('./src/after.js', 'utf8')
+    const before = `${ses}\n;\n${beforeSrc}`
+    const main = `${ses}\n;\n${mainSrc}`
 
-// repairIntrinsics({
-  // errorTaming: 'unsafe',
-  // consoleTaming: 'unsafe',
-  // errorTrapping: 'none',
-  // unhandledRejectionTrapping: 'none',
-  // overrideTaming: 'severe',
-  // stackFiltering: 'verbose',
-// });
-// (vetted shim)
-// hardenIntrinsics();
+    return { main, before, after }
+  } catch (err) {
+    console.error(err)
+  }
+}
 
-// write the result to dist
+async function build() {
+  const distPath = './dist'
+  const scripts = concat()
+  await mkdir(distPath, { recursive: true })
 
-// same with after, which is just the call to lockdown() without the need for options
+  Object.entries(scripts).forEach(([name, script]) => {
+    writeFileSync(path.join(distPath, name + '.js'), script, 'utf8')
+  })
+}
 
-// similar with main
+build().then(() => console.log('done'), console.error)

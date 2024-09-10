@@ -1,5 +1,3 @@
-// SES goes here 
-
 repairIntrinsics({
   errorTaming: 'unsafe',
   consoleTaming: 'unsafe',
@@ -7,4 +5,5 @@ repairIntrinsics({
   unhandledRejectionTrapping: 'none',
   overrideTaming: 'severe',
   stackFiltering: 'verbose',
+  legacyRegeneratorRuntimeTaming: 'unsafe-ignore'
 })
