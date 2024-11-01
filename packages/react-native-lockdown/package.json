@@ -1,46 +1,48 @@
 {
-    "name": "@lavamoat/react-native-lockdown",
-    "version": "1.0.0",
-    "description": "Utility for providing SES lockdown in react native apps",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/LavaMoat/lavamoat.git",
-      "directory": "packages/react-native-lockdown"
-    },
-    "homepage": "https://github.com/LavaMoat/lavamoat#readme",
-    "bugs": {
-      "url": "https://github.com/LavaMoat/lavamoat/issues"
-    },
-    "author": "LavaMoat Team",
-    "license": "MIT",
-    "engines": {
-      "node": ">18.0.0"
-    },
-    "main": "dist/main.js",
-    "types": "./types/src/types.d.ts",
+  "name": "@lavamoat/react-native-lockdown",
+  "version": "1.0.0",
+  "description": "Utility for providing SES lockdown in react native apps",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LavaMoat/lavamoat.git",
+    "directory": "packages/react-native-lockdown"
+  },
+  "homepage": "https://github.com/LavaMoat/lavamoat#readme",
+  "bugs": {
+    "url": "https://github.com/LavaMoat/lavamoat/issues"
+  },
+  "author": "LavaMoat Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">18.0.0"
+  },
+  "main": "dist/lockdown.js",
+  "exports": {
+    ".": "./dist/lockdown.js",
+    "./repair": "./dist/repair.js",
+    "./repairJsc": "./dist/repairJsc.js",
+    "./harden": "./dist/harden.js",
+    "./makeGetPolyfills": "./dist/makeGetPolyfills.js"
+  },
+  "types": "./types/src/types.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "types",
+    "!*.tsbuildinfo"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "ava"
+  },
+  "dependencies": {
+    "@react-native/polyfills": "2.0.0",
+    "ses": "1.8.0"
+  },
+  "ava": {
     "files": [
-      "CHANGELOG.md",
-      "dist",
-      "types",
-      "!*.tsbuildinfo"
+      "test/*.spec.js"
     ],
-    "scripts": {
-      "build": "node build.js",
-      "test": "ava"
-    },
-    "exports": {
-      ".": "./dist/main.js",
-      "./before": "./dist/before.js",
-      "./after": "./dist/after.js"
-    },
-    "dependencies": {
-      "ses": "1.8.0"
-    },
-    "ava": {
-      "files": [
-        "test/*.spec.js"
-      ],
-      "timeout": "30s"
-    }
+    "timeout": "30s"
   }
-  
+}
