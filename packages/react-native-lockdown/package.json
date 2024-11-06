@@ -19,6 +19,8 @@
   "main": "dist/lockdown.js",
   "exports": {
     ".": "./dist/lockdown.js",
+    "./lockdown": "./dist/lockdown.js",
+    "./lockdownJsc": "./dist/lockdownJsc.js",
     "./repair": "./dist/repair.js",
     "./repairJsc": "./dist/repairJsc.js",
     "./harden": "./dist/harden.js",
