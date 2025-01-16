@@ -14,7 +14,6 @@ async function scuttle(t, scuttleGlobalThis, globals) {
   const webpackConfigDefault = makeConfig({
     scuttleGlobalThis,
     generatePolicy: true,
-    emitPolicySnapshot: true,
     diagnosticsVerbosity: 1,
     policyLocation: path.resolve(__dirname, 'fixtures/main/policy-scuttling'),
   })
